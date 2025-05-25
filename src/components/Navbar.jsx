@@ -2,21 +2,22 @@ import React from 'react'
 import { CiSearch } from "react-icons/ci";
 import { IoPerson } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <div className=''>
     <div className='bg-[#1e4e9d] flex gap-40 '>
-        <div className='mx-20 flex gap-[42rem]'>
+        <div className='mx-20 flex gap-[40rem]'>
 <h1 className='text-xs text-white font-family p-3'>Winter-Season Sale Up To <span className='text-yellow-300'>25%</span> OFF Use Coupon Code <span className='text-yellow-300 border-2 p-1 border-dotted border-yellow-300'>“SALEON”</span></h1>
 <h1 className='p-3 text-xs text-white '>Call Us : +11 222 3333</h1></div>
     </div>
     <div className='flex   justify-between gap-10 bg-[#2557aa] p-4'>
-        <div className='mx-20 flex gap-72 items-center justify-between '>
-  <h1 className='text-xl flex text-white'>
+        <div className='mx-20 flex gap-68 items-center justify-between '>
+ <Link to = '/' > <h1 className='text-xl flex text-white'>
             Hard<p className='text-yellow-300'>ware</p>
             
-        </h1>
+        </h1> </Link>
 
 <div className="flex items-center border border-white bg-white rounded-2xl overflow-hidden w-full max-w-xl shadow-sm">
   {/* All Categories button */}

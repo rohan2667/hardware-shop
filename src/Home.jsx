@@ -1,61 +1,232 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdSettings } from "react-icons/io";
 import { IoPerson } from "react-icons/io5";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
+const topProducts = [
+  { id: 1, name: "Product 5", price: "$19.99", rating: 4.5, image: "/images/5-76x84.jpg" },
+  { id: 5, name: "Product 9", price: "$29.99", rating: 3.5, image: "/images/9-76x84.jpg" },
+  { id: 9, name: "Product 13", price: "$39.99", rating: 5, image: "/images/13-76x84.jpg" },
+  { id: 10, name: "Product 14", price: "$24.99", rating: 4, image: "/images/14-76x84.jpg" },
+  { id: 11, name: "Product 16", price: "$34.99", rating: 4.8, image: "/images/16-76x84.jpg" }
+];
+
+const otherProducts = [
+  { id: 2, name: "Product 6", price: "$14.99", rating: 3, image: "/images/6-76x84.jpg", category: "new" },
+  { id: 3, name: "Product 7", price: "$22.99", rating: 4.2, image: "/images/7-76x84.jpg", category: "featured" },
+  { id: 4, name: "Product 8", price: "$18.99", rating: 3.8, image: "/images/8-76x84.jpg", category: "top-rated" },
+  { id: 6, name: "Product 10", price: "$25.99", rating: 4.1, image: "/images/10-76x84.jpg", category: "new" },
+  { id: 7, name: "Product 11", price: "$27.99", rating: 4.7, image: "/images/11-76x84.jpg", category: "featured" },
+  { id: 8, name: "Product 12", price: "$30.99", rating: 4.9, image: "/images/12-76x84.jpg", category: "top-rated" },
+  { id: 12, name: "Product 18", price: "$20.99", rating: 3.9, image: "/images/18-76x84.jpg", category: "new" },
+  { id: 13, name: "Product 20", price: "$21.99", rating: 4.3, image: "/images/20-76x84.jpg", category: "featured" },
+  { id: 14, name: "Product 20", price: "$23.99", rating: 4.6, image: "/images/20-267x296.jpg", category: "top-rated" }
+];
+
+const filters = [
+  { key: "new", label: "New Arrival" },
+  { key: "featured", label: "Featured" },
+  { key: "top-rated", label: "Top Rated" }
+];
+
+const renderStars = (rating) => {
+  const stars = [];
+  const fullStars = Math.floor(rating);
+  const halfStar = rating - fullStars >= 0.5;
+  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+  for (let i = 0; i < fullStars; i++) {
+    stars.push(<FaStar key={"full" + i} className="text-yellow-400" />);
+  }
+  if (halfStar) {
+    stars.push(<FaStarHalfAlt key="half" className="text-yellow-400" />);
+  }
+  for (let i = 0; i < emptyStars; i++) {
+    stars.push(<FaRegStar key={"empty" + i} className="text-yellow-400" />);
+  }
+  return stars;
+};
 
 const Home = () => {
+  const [selectedFilter, setSelectedFilter] = useState("new");
+
+  const filteredProducts = otherProducts.filter(product => product.category === selectedFilter);
+
   return (
     <div className='flex flex-col'>
-        <div className='mx-20'>
-    <div className='flex gap-32 p-4 '>
-        <div className=' flex'>
-        <button className="p-1 text-md text-gray-700 border-r">
-    All Categories
-  </button>
-  <GiHamburgerMenu className='mt-2 text-lg ml-1 font-extralight' />
-         </div>
- <div className='flex gap-20'>
-         <h1 className=' mt-1'>HOME</h1>
-                 
-         <h1 className=' mt-1'>ABOUT US</h1>
-
-         <h1 className=' mt-1'>SHOP</h1>
-
-                  <h1 className=' mt-1'>BRANDS</h1>
-
-
-         <h1 className=' mt-1'>CONTACT US</h1>
-
-         </div>
-<div className='flex gap-12'>
-<div className='flex gap-2'>
-     <h1>Sign in</h1>
-    <IoPerson className='mt-1'/>
-   
-</div>
-
-<div className='flex gap-2 '>
-    <h1>My Cart</h1>
-    <FaShoppingCart className='mt-1'/>
-</div>
-       </div>
-
-     
+      <div className='mx-12'>
+        <div className='flex gap-28 p-4 '>
+          <div className=' flex'>
+            <button className="p-1 text-md text-gray-700 border-r">
+              All Categories
+            </button>
+            <GiHamburgerMenu className='mt-2 text-lg ml-1 font-extralight' />
+          </div>
+          <div className='flex gap-20'>
+            <h1 className=' mt-1'>HOME</h1>
+            <h1 className=' mt-1'>ABOUT US</h1>
+            <h1 className=' mt-1'>SHOP</h1>
+            <h1 className=' mt-1'>BRANDS</h1>
+            <h1 className=' mt-1'>CONTACT US</h1>
+          </div>
+          <div className='flex gap-12'>
+            <div className='flex gap-2'>
+              <h1>Sign in</h1>
+              <IoPerson className='mt-1' />
+            </div>
+            <div className='flex gap-2 '>
+              <h1>My Cart</h1>
+              <FaShoppingCart className='mt-1' />
+            </div>
+          </div>
         </div>
- <div className ='flex flex-col mt-2 gap-6'>
-    <img src='/public/images/main-banner-01-1920x660.png' className='h-[28rem] p-2 w-full'/>
-
-    <div className='flex gap-5'>
-    <img src='/public/images/subbanner_img1.jpg' className='h-[21rem] p-2' />
-        <img src='/public/images/subbanner_img2.jpg' className='h-[21rem] p-2' />
-
-     </div>
-     </div>
-
-     </div>
-  </div>
+          <div className='flex flex-col mt-2 gap-6'>
+          <img src='/images/main-banner-01-1920x660.png' className='h-[28rem] p-2 w-full' />
+          <div className='flex gap-12'>
+            <img src='/images/subbanner_img1.jpg' className='h-[20rem] p-2' />
+            <img src='/images/subbanner_img2.jpg' className='h-[20rem] p-2' />
+          </div>
+          <div className='flex gap-6'>
+            <div className='border border-gray-300 p-4 w-[30%]'>
+              <h1 className='mb-4 text-xl font-semibold'>Top Products</h1>
+              <hr className='border-1 border-gray-300 mb-4'></hr>
+              <div className='flex flex-col gap-6'>
+                {topProducts.map(product => (
+                  <Link key={product.id} to={`/product/${product.id}`} className='flex items-center gap-4 border p-2 rounded hover:shadow-lg'>
+                    <img src={product.image} alt={product.name} className='h-[84px] w-[76px] object-cover flex-shrink-0' />
+                    <div className='flex flex-col'>
+                      <span className='font-semibold'>{product.name}</span>
+                      <span className='font-semibold'>{product.price}</span>
+                      <div className='flex items-center gap-1 mt-1'>
+                        {renderStars(product.rating)}
+                        <span className='text-sm text-gray-600'>{product.rating.toFixed(1)}</span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div className='border border-gray-300 p-4 w-[70%]'>
+              <h1 className='mb-4 text-xl font-semibold'>Products</h1>
+              <div className='flex gap-6 mb-4'>
+                {filters.map(filter => (
+                  <button
+                    key={filter.key}
+                    onClick={() => setSelectedFilter(filter.key)}
+                    className={`px-4 py-2 border rounded ${
+                      selectedFilter === filter.key ? "bg-blue-500 text-white" : "bg-white text-gray-700"
+                    }`}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+              <hr className='border-1 border-gray-300 mb-4'></hr>
+              <div className='flex gap-6 flex-wrap'>
+                {filteredProducts.map(product => (
+                  <Link key={product.id} to={`/product/${product.id}`} className='flex items-center gap-4 border p-2 rounded hover:shadow-lg'>
+                    <img src={product.image} alt={product.name} className='h-[84px] w-[76px] object-cover flex-shrink-0' />
+                    <div className='flex flex-col'>
+                      <span className='font-semibold'>{product.name}</span>
+                      <span className='font-semibold'>{product.price}</span>
+                      <div className='flex items-center gap-1 mt-1'>
+                        {renderStars(product.rating)}
+                        <span className='text-sm text-gray-600'>{product.rating.toFixed(1)}</span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+                {filteredProducts.length === 0 && (
+                  <p className='text-gray-500'>No products found for this category.</p>
+                )}
+              </div>
+            </div>
+          </div>
+          {/* New Best Seller Products Section */}
+          <div className='border border-gray-300 p-4 mt-8'>
+            <h1 className='mb-4 text-xl font-semibold'>Best Seller Products</h1>
+            <hr className='border-1 border-gray-300 mb-4'></hr>
+            <div className='flex gap-6 flex-wrap'>
+              {[...topProducts, ...otherProducts].map(product => (
+                <Link key={product.id} to={`/product/${product.id}`} className='flex items-center gap-4 border p-2 rounded hover:shadow-lg'>
+                  <img src={product.image} alt={product.name} className='h-[84px] w-[76px] object-cover flex-shrink-0' />
+                  <div className='flex flex-col'>
+                    <span className='font-semibold'>{product.name}</span>
+                    <span className='font-semibold'>{product.price}</span>
+                    <div className='flex items-center gap-1 mt-1'>
+                      {renderStars(product.rating)}
+                      <span className='text-sm text-gray-600'>{product.rating.toFixed(1)}</span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          {/* Newsletter Signup Section */}
+          <div className='border border-gray-300 p-6 mt-12 rounded'>
+            <h2 className='text-2xl font-semibold mb-4'>Sign up for our Newsletter</h2>
+            <form className='flex gap-4'>
+              <input
+                type='email'
+                placeholder='Enter your email'
+                className='flex-grow p-2 border border-gray-400 rounded'
+                required
+              />
+              <button type='submit' className='bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700'>
+                Subscribe
+              </button>
+            </form>
+          </div>
+          {/* Footer Section */}
+          <footer className='mt-12 bg-gray-800 text-white p-8 rounded'>
+            <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8'>
+              <div>
+                <h3 className='text-lg font-semibold mb-4'>Hardware Shop</h3>
+                <p className='text-sm mb-2'>1234 Main Street</p>
+                <p className='text-sm mb-2'>City, State, ZIP</p>
+                <p className='text-sm mb-2'>Phone: (123) 456-7890</p>
+                <p className='text-sm mb-2'>Email: support@hardwareshop.com</p>
+              </div>
+              <div>
+                <h3 className='text-lg font-semibold mb-4'>Quick Links</h3>
+                <ul className='text-sm space-y-2'>
+                  <li><a href='#' className='hover:underline'>Home</a></li>
+                  <li><a href='#' className='hover:underline'>Shop</a></li>
+                  <li><a href='#' className='hover:underline'>About Us</a></li>
+                  <li><a href='#' className='hover:underline'>Contact Us</a></li>
+                  <li><a href='#' className='hover:underline'>FAQ</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className='text-lg font-semibold mb-4'>Support</h3>
+                <ul className='text-sm space-y-2'>
+                  <li><a href='#' className='hover:underline'>Help Center</a></li>
+                  <li><a href='#' className='hover:underline'>Returns</a></li>
+                  <li><a href='#' className='hover:underline'>Shipping</a></li>
+                  <li><a href='#' className='hover:underline'>Terms of Service</a></li>
+                  <li><a href='#' className='hover:underline'>Privacy Policy</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className='text-lg font-semibold mb-4'>Follow Us</h3>
+                <div className='flex space-x-4 text-xl'>
+                  <a href='#' aria-label='Facebook' className='hover:text-blue-600'></a>
+                  <a href='#' aria-label='Twitter' className='hover:text-blue-400'></a>
+                  <a href='#' aria-label='Instagram' className='hover:text-pink-600'></a>
+                  <a href='#' aria-label='LinkedIn' className='hover:text-blue-700'></a>
+                </div>
+              </div>
+            </div>
+            <div className='mt-8 text-center text-sm text-gray-400'>
+              &copy; 2024 Hardware Shop. All rights reserved.
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
   )
 }
 
-export default Home
+export default Home;

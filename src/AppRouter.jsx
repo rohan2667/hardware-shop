@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './Home';
 import ProductDetail from './ProductDetail';
 
-function App() {
+function AppRouter() {
   return (
     <Router>
       <Navbar />
@@ -15,4 +15,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppRouter;
