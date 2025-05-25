@@ -8,24 +8,24 @@ import { Link } from 'react-router-dom';
 const topProducts = [
   { id: 1, name: "Product 5", price: "$19.99", rating: 4.5, image: "/images/5-76x84.jpg" },
   { id: 5, name: "Product 9", price: "$29.99", rating: 3.5, image: "/images/9-76x84.jpg" },
-  { id: 9, name: "Product 13", price: "$39.99", rating: 5, image: "/images/13-76x84.jpg" },
-  { id: 10, name: "Product 14", price: "$24.99", rating: 4, image: "/images/14-76x84.jpg" },
   { id: 11, name: "Product 16", price: "$34.99", rating: 4.8, image: "/images/16-76x84.jpg" }
 ];
 
 const otherProducts = [
-  { id: 2, name: "Product 6", price: "$14.99", rating: 3, image: "/images/6-76x84.jpg", category: "new" },
-  { id: 3, name: "Product 7", price: "$22.99", rating: 4.2, image: "/images/7-76x84.jpg", category: "featured" },
-  { id: 4, name: "Product 8", price: "$18.99", rating: 3.8, image: "/images/8-76x84.jpg", category: "top-rated" },
-  { id: 6, name: "Product 10", price: "$25.99", rating: 4.1, image: "/images/10-76x84.jpg", category: "new" },
-  { id: 7, name: "Product 11", price: "$27.99", rating: 4.7, image: "/images/11-76x84.jpg", category: "featured" },
-  { id: 8, name: "Product 12", price: "$30.99", rating: 4.9, image: "/images/12-76x84.jpg", category: "top-rated" },
-  { id: 12, name: "Product 18", price: "$20.99", rating: 3.9, image: "/images/18-76x84.jpg", category: "new" },
-  { id: 13, name: "Product 20", price: "$21.99", rating: 4.3, image: "/images/20-76x84.jpg", category: "featured" },
-  { id: 14, name: "Product 20", price: "$23.99", rating: 4.6, image: "/images/20-267x296.jpg", category: "top-rated" }
+  { id: 2, name: "Product 6", price: "$14.99", rating: 3, image: "/images/6-76x84.jpg", category:[ "new", "featured"] },
+  { id: 3, name: "Product 7", price: "$22.99", rating: 4.2, image: "/images/7-76x84.jpg", category:[ "new", "featured"]  },
+  { id: 4, name: "Product 8", price: "$18.99", rating: 3.8, image: "/images/8-76x84.jpg", category: [ "new", "featured"]  },
+  { id: 6, name: "Product 10", price: "$25.99", rating: 4.1, image: "/images/10-76x84.jpg", category:[ "new", "top-rated"]  },
+  { id: 7, name: "Product 11", price: "$27.99", rating: 4.7, image: "/images/11-76x84.jpg", category:[ "new", "top-rated"] },
+  { id: 8, name: "Product 12", price: "$30.99", rating: 4.9, image: "/images/12-76x84.jpg", category:[ "new", "top-rated"] },
+ { id: 9, name: "Product 13", price: "$39.99", rating: 5, image: "/images/13-76x84.jpg", category:[ "featured", "top-rated"]  },
+  { id: 10, name: "Product 14", price: "$24.99", rating: 4, image: "/images/14-76x84.jpg", category:[  "featured", "top-rated"]  },
+  { id: 12, name: "Product 18", price: "$20.99", rating: 3.9, image: "/images/18-76x84.jpg", category: [ "new", "featured", "top-rated"]  },
+  { id: 13, name: "Product 20", price: "$21.99", rating: 4.3, image: "/images/20-76x84.jpg", category:[  "featured", "top-rated"]  },
+  { id: 14, name: "Product 20", price: "$23.99", rating: 4.6, image: "/images/20-267x296.jpg", category:[ "new", "featured", "top-rated"] }
 ];
 
-const filters = [
+const filters= [
   { key: "new", label: "New Arrival" },
   { key: "featured", label: "Featured" },
   { key: "top-rated", label: "Top Rated" }
@@ -52,7 +52,7 @@ const renderStars = (rating) => {
 const Home = () => {
   const [selectedFilter, setSelectedFilter] = useState("new");
 
-  const filteredProducts = otherProducts.filter(product => product.category === selectedFilter);
+  const filteredProducts = otherProducts.filter(product => product.category.includes(selectedFilter));
 
   return (
     <div className='flex flex-col'>
@@ -165,9 +165,10 @@ const Home = () => {
             </div>
           </div>
           {/* Newsletter Signup Section */}
-          <div className='border border-gray-300 p-6 mt-12 rounded'>
+          <div className='p-6 mt-12 rounded text-center'>
+            <p className='mb-4'>Get e-mail updates about our latest shop and special offers.</p>
             <h2 className='text-2xl font-semibold mb-4'>Sign up for our Newsletter</h2>
-            <form className='flex gap-4'>
+            <form className='flex gap-4 justify-center mx-40'>
               <input
                 type='email'
                 placeholder='Enter your email'

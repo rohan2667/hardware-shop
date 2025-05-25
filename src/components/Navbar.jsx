@@ -14,7 +14,7 @@ const Navbar = () => {
     </div>
     <div className='flex   justify-between gap-10 bg-[#2557aa] p-4'>
         <div className='mx-20 flex gap-68 items-center justify-between '>
- <Link to = '/' > <h1 className='text-xl flex text-white'>
+ <Link to = '/' > <h1 className='text-xl flex text-white font-sand'>
             Hard<p className='text-yellow-300'>ware</p>
             
         </h1> </Link>
