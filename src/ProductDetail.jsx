@@ -49,9 +49,9 @@ const ProductDetail = () => {
   const relatedProducts = allProducts.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
 
   return (
-    <div className="p-8 max-w-5xl mx-auto">
-      <div className="flex gap-8">
-        <img src={product.image} alt={product.name} className="w-64 h-64 object-cover rounded" />
+    <div className="p-4 max-w-5xl mx-auto">
+      <div className="flex flex-col md:flex-row gap-8">
+        <img src={product.image} alt={product.name} className="w-full md:w-64 h-auto md:h-64 object-cover rounded" />
         <div className="flex flex-col gap-4">
           <h1 className="text-3xl font-bold">{product.name}</h1>
           <div className="flex items-center gap-2">
@@ -65,7 +65,7 @@ const ProductDetail = () => {
           <p className="mt-4 text-gray-700">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-          <div className="flex gap-4 mt-6">
+          <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
             <button className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Add to Wishlist</button>
             <button className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Add to Compare</button>
@@ -78,12 +78,16 @@ const ProductDetail = () => {
       </div>
       <div className="mt-12">
         <h2 className="text-2xl font-semibold mb-4">Related Products</h2>
-        <div className="flex gap-6 flex-wrap">
+        <div className="flex flex-col sm:flex-row gap-6 ">
           {relatedProducts.length > 0 ? relatedProducts.map(rp => (
-            <Link key={rp.id} to={`/product/${rp.id}`} className="border p-2 rounded w-40 flex flex-col items-center hover:shadow-lg">
-              <img src={rp.image} alt={rp.name} className="w-24 h-24 object-cover mb-2" />
-              <span className="font-semibold">{rp.name}</span>
+            <Link key={rp.id} to={`/product/${rp.id}`} className="flex flex-col items-center gap-6 border border-gray-200 p-6 rounded-lg hover:shadow-lg w-full max-w-[340px] sm:w-full">
+              <img src={rp.image} alt={rp.name} className="h-[120px] w-[110px] object-cover flex-shrink-0 " />
+              <span className="font-semibold text-lg">{rp.name}</span>
               <span className="text-sm text-gray-600">{rp.price}</span>
+              <div className='flex flex-col gap-4 mt-4 sm:flex-row  '>
+                <button className='bg-blue-600 text-white px-4 py-2 sm: rounded hover:bg-blue-700'>Add to Cart</button>
+                <button className='bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400'>Add to Wishlist</button>
+              </div>
             </Link>
           )) : <p className="text-gray-600">No related products found.</p>}
         </div>
@@ -93,3 +97,4 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+// This code defines a ProductDetail component that displays detailed information about a specific product.
