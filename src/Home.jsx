@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdSettings } from "react-icons/io";
 import { IoPerson } from "react-icons/io5";
+import { TbChecklist } from "react-icons/tb";
 import { FaShoppingCart, FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
@@ -58,20 +59,20 @@ const Home = () => {
     <div className='flex flex-col'>
       <div className='mx-4 md:mx-12'>
         <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-28 p-4'>
-          <div className='flex justify-between md:justify-start'>
+          {/* <div className='flex justify-between md:justify-start'>
             <button className="p-1 text-md text-gray-700 border-r">
               All Categories
             </button>
             <GiHamburgerMenu className='mt-2 text-lg ml-1 font-extralight' />
-          </div>
-          <div className='flex flex-wrap gap-6 md:gap-20 justify-center md:justify-start'>
+          </div> */}
+          {/* <div className='flex flex-wrap gap-6 md:gap-20 justify-center md:justify-start'>
             <h1 className=' mt-1'>HOME</h1>
             <h1 className=' mt-1'>ABOUT US</h1>
             <h1 className=' mt-1'>SHOP</h1>
             <h1 className=' mt-1'>BRANDS</h1>
             <h1 className=' mt-1'>CONTACT US</h1>
-          </div>
-          <div className='flex gap-12 justify-center md:justify-start'>
+          </div> */}
+          {/* <div className='flex gap-12 justify-center md:justify-start'>
             <div className='flex gap-2'>
               <h1>Sign in</h1>
               <IoPerson className='mt-1' />
@@ -80,22 +81,22 @@ const Home = () => {
               <h1>My Cart</h1>
               <FaShoppingCart className='mt-1' />
             </div>
-          </div>
+          </div> */}
         </div>
-          <div className='flex flex-col mt-2 gap-6'>
+          <div className='flex flex-col  gap-6'>
           <img src='/images/main-banner-01-1920x660.png' className='h-[28rem] p-2 w-full object-cover' />
           <div className='flex flex-col md:flex-row gap-6'>
             <img src='/images/subbanner_img1.jpg' className='h-[20rem] p-2 w-full md:w-1/2 object-cover' />
             <img src='/images/subbanner_img2.jpg' className='h-[20rem] p-2 w-full md:w-1/2 object-cover' />
           </div>
           <div className='flex flex-col md:flex-row gap-6'>
-            <div className='border border-gray-200 p-6 w-full md:w-1/3 rounded-lg'>
+            <div className='border border-gray-200 p-6 w-full md:w-[30rem] rounded-lg'>
               <h1 className='mb-6 text-2xl font-semibold'>Top Products</h1>
               <hr className='border-1 border-gray-200 mb-6'></hr>
               <div className='flex flex-col gap-8'>
                 {topProducts.map(product => (
                   <Link key={product.id} to={`/product/${product.id}`} className='flex flex-col items-center gap-6 border border-gray-200 p-6 rounded-lg hover:shadow-lg w-full'>
-                    <img src={product.image} alt={product.name} className='h-[120px] w-[110px] object-cover flex-shrink-0' />
+                    <img src={product.image} alt={product.name} className='h-[160px] w-[220px] object-cover flex-shrink-0' />
                     <div className='flex flex-col items-center'>
                       <span className='font-semibold text-lg'>{product.name}</span>
                       <span className='font-semibold text-lg'>{product.price}</span>
@@ -105,14 +106,14 @@ const Home = () => {
                       </div>
                       <div className='flex gap-4 mt-4'>
                         <button className='bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700'>Add to Cart</button>
-                        <button className='bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400'>Add to Wishlist</button>
+                        <button className='bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-300'>Buy now</button>
                       </div>
                     </div>
                   </Link>
                 ))}
               </div>
             </div>
-            <div className='border border-gray-200 p-6 w-full md:w-2/3 rounded-lg'>
+            <div className='border border-gray-200 p-6 w-full md:w-full rounded-lg'>
               <h1 className='mb-6 text-2xl font-semibold'>Products</h1>
               <div className='flex gap-6 mb-4 flex-wrap'>
                 {filters.map(filter => (
@@ -128,10 +129,13 @@ const Home = () => {
                 ))}
               </div>
               <hr className='border-1 border-gray-200 mb-6'></hr>
-              <div className='flex gap-6 flex-wrap'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8  '>
                 {filteredProducts.map(product => (
                   <Link key={product.id} to={`/product/${product.id}`} className='flex flex-col items-center gap-6 border border-gray-200 p-6 rounded-lg hover:shadow-lg w-full sm:w-auto'>
-                    <img src={product.image} alt={product.name} className='h-[120px] w-[110px] object-cover flex-shrink-0' />
+                    <div className='flex'>
+                    <img src={product.image} alt={product.name} className='h-[160px] w-[220px] object-cover flex-shrink-0' />
+                    <TbChecklist   className='size-8 text-gray-500 hover:ease-in-out'/>
+                    </div>
                     <div className='flex flex-col items-center'>
                       <span className='font-semibold text-lg'>{product.name}</span>
                       <span className='font-semibold text-lg'>{product.price}</span>
@@ -141,7 +145,7 @@ const Home = () => {
                       </div>
                       <div className='flex gap-4 mt-4'>
                         <button className='bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700'>Add to Cart</button>
-                        <button className='bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400'>Add to Wishlist</button>
+                        <button className='bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-300'>Buy now</button>
                       </div>
                     </div>
                   </Link>
