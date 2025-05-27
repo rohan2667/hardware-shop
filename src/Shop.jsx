@@ -4,23 +4,23 @@ import { Link } from 'react-router-dom';
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 const topProducts = [
-  { id: 1, name: "Cordless Drill", price: "$19.99", rating: 4.5, image: "/images/5-76x84.jpg" },
-  { id: 5, name: "Adjustable Wrench", price: "$29.99", rating: 3.5, image: "/images/9-76x84.jpg" },
-  { id: 11, name: "Electric Sander", price: "$34.99", rating: 4.8, image: "/images/16-76x84.jpg" }
+  { id: 1, name: "Cordless Drill", price: "$19.99", rating: 4.5, image: "/images/image_5_1024x1024.jpg" },
+  { id: 5, name: "Adjustable Wrench", price: "$29.99", rating: 3.5, image: "/images/image_7_14482163-4d07-497f-a8fb-708688de4bb6.jpg" },
+  { id: 11, name: "Electric Sander", price: "$34.99", rating: 4.8, image: "/images/image_14_1461b7a8-a921-4bbf-845c-51e6c2da9e8a.jpg" }
 ];
 
 const otherProducts = [
-  { id: 2, name: "Hammer", price: "$14.99", rating: 3, image: "/images/6-76x84.jpg", category: ["new", "featured"] },
-  { id: 3, name: "Tape Measure", price: "$22.99", rating: 4.2, image: "/images/7-76x84.jpg", category: ["new", "featured"] },
-  { id: 4, name: "Screwdriver Set", price: "$18.99", rating: 3.8, image: "/images/8-76x84.jpg", category: ["new", "featured"] },
-  { id: 6, name: "Level", price: "$25.99", rating: 4.1, image: "/images/10-76x84.jpg", category: ["new", "top-rated"] },
-  { id: 7, name: "Utility Knife", price: "$27.99", rating: 4.7, image: "/images/11-76x84.jpg", category: ["new", "top-rated"] },
-  { id: 8, name: "Chisel", price: "$30.99", rating: 4.9, image: "/images/12-76x84.jpg", category: ["new", "top-rated"] },
-  { id: 9, name: "Handsaw", price: "$39.99", rating: 5, image: "/images/13-76x84.jpg", category: ["featured", "top-rated"] },
-  { id: 10, name: "Pliers", price: "$24.99", rating: 4, image: "/images/14-76x84.jpg", category: ["featured", "top-rated"] },
-  { id: 12, name: "Pipe Wrench", price: "$20.99", rating: 3.9, image: "/images/18-76x84.jpg", category: ["new", "featured", "top-rated"] },
-  { id: 13, name: "Nail Gun", price: "$21.99", rating: 4.3, image: "/images/20-76x84.jpg", category: ["featured", "top-rated"] },
-  { id: 14, name: "Air Compressor", price: "$23.99", rating: 4.6, image: "/images/20-267x296.jpg", category: ["new", "featured", "top-rated"] }
+  { id: 2, name: "Hammer", price: "$14.99", rating: 3, image: "/images/image_1.jpg", category: ["new", "featured"] },
+  { id: 3, name: "Tape Measure", price: "$22.99", rating: 4.2, image: "/images/image_4.jpg", category: ["new", "featured"] },
+  { id: 4, name: "Screwdriver Set", price: "$18.99", rating: 3.8, image: "/images/image_6_1024x1024.jpg", category: ["new", "featured"] },
+  { id: 6, name: "Level", price: "$25.99", rating: 4.1, image: "/images/image_11.jpg", category: ["new", "top-rated"] },
+  { id: 7, name: "Utility Knife", price: "$27.99", rating: 4.7, image: "/images/image_14_314888b1-545d-4ed7-b2c1-ef05736b5351.jpg", category: ["new", "top-rated"] },
+  { id: 8, name: "Chisel", price: "$30.99", rating: 4.9, image: "/images/image_15_8dbf766f-213b-4729-bdbe-014fd14321aa.jpg", category: ["new", "top-rated"] },
+  { id: 9, name: "Handsaw", price: "$39.99", rating: 5, image: "/images/image_18.jpg", category: ["featured", "top-rated"] },
+  { id: 10, name: "Pliers", price: "$24.99", rating: 4, image: "/images/image_14_1461b7a8-a921-4bbf-845c-51e6c2da9e8a.jpg", category: ["featured", "top-rated"] },
+  { id: 12, name: "Pipe Wrench", price: "$20.99", rating: 3.9, image: "/images/image_18.jpg", category: ["new", "featured", "top-rated"] },
+  { id: 13, name: "Nail Gun", price: "$21.99", rating: 4.3, image: "/images/image_20_76x84.jpg", category: ["featured", "top-rated"] },
+  { id: 14, name: "Air Compressor", price: "$23.99", rating: 4.6, image: "/images/banner-1.png", category: ["new", "featured", "top-rated"] }
 ];
 
 const filters= [
@@ -55,7 +55,7 @@ const Shop = () => {
   const allProducts = [...topProducts, ...filteredProducts];
 
   return (
-    <div className="max-w-7xl mx-auto mt-5 p-6">
+    <div className="max-w-7xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Shop</h1>
       <div className="mb-4 flex gap-4">
         {filters.map(filter => (

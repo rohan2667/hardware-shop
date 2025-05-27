@@ -1,14 +1,13 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react';
 import { CiSearch } from "react-icons/ci";
 import { IoPerson } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
-import CartOverlay from './CartOverlay';
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { toggleCart, cartItems } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -25,7 +24,7 @@ const Navbar = () => {
         <h1 className='p-3 text-xs text-white text-center md:text-right'>Call Us : +11 222 3333</h1>
       </div>
       <div className='fixed top-0 left-0 right-0 z-50 flex flex-col md:flex-row justify-between gap-4 md:gap-10 bg-[#2557aa] p-4 px-4 md:px-20'>
-        <Link to='/' className='text-xl flex text-white font-sand justify-center md:justify-start'>
+        <Link to='/' className='text-3xl mt-2 flex text-white font-sand justify-center md:justify-start'>
           Hard<p className='text-yellow-300 ml-1'>ware</p>
         </Link>
         <div className="flex items-center border border-white bg-white rounded-2xl overflow-hidden w-full max-w-xl shadow-sm">
@@ -92,8 +91,8 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <button
-            onClick={toggleCart}
+          <Link
+            to="/cart"
             className="relative text-white hover:text-yellow-300 font-semibold flex items-center"
           >
             My Cart <FaShoppingCart className="ml-2" />
@@ -102,12 +101,11 @@ const Navbar = () => {
                 {totalQuantity}
               </span>
             )}
-          </button>
+          </Link>
         </div>
       </nav>
-      <CartOverlay />
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

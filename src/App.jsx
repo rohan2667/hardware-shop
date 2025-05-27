@@ -7,6 +7,7 @@ import ContactUs from './ContactUs';
 import Shop from './Shop';
 import SignIn from './SignIn';
 import Register from './Register';
+import Cart from './Cart';
 import { CartProvider } from './context/CartContext';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
     <CartProvider>
       <Router>
         <Navbar />
-        <div className="pt-[30px]">
+        <div className="pt-[60px]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductDetail />} />
@@ -23,6 +24,7 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </div>
       </Router>
