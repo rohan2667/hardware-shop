@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { CartContext } from './context/CartContext';
 import { Link } from 'react-router-dom';
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import Newsletter from './components/Newsletter';
 
 const topProducts = [
   { id: 1, name: "Cordless Drill", price: "$19.99", rating: 4.5, image: "/images/image_5_1024x1024.jpg" },
@@ -55,7 +56,8 @@ const Shop = () => {
   const allProducts = [...topProducts, ...filteredProducts];
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <div>
+    <div className="p-6 px-4 md:px-20">
       <h1 className="text-3xl font-bold mb-6">Shop</h1>
       <div className="mb-4 flex gap-4">
         {filters.map(filter => (
@@ -70,7 +72,7 @@ const Shop = () => {
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {allProducts.length === 0 && (
           <p className="text-gray-500">No products found for this category.</p>
         )}
@@ -102,16 +104,20 @@ const Shop = () => {
                 >
                   Add to Cart
                 </button>
-                <button className="bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-300">
+                <button className="bg-[#fdc800] text-black px-4 py-2 rounded hover:bg-yellow-300">
                   Buy now
                 </button>
               </div>
             </div>
           </Link>
         ))}
+      
       </div>
+        
     </div>
-  );
+<Newsletter/>  </div>
+);
+
 };
 
 export default Shop;

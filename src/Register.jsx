@@ -66,6 +66,10 @@ const Register = () => {
   };
 
   return (
+    <div className='flex'>
+    <div>
+      <img src='/public/images/register.png' className='w-[65rem] h-[35rem]'></img>
+    </div>
     <div className="w-full p-10 mt-6 bg-white rounded shadow max-w-full">
       <h1 className="text-3xl font-bold mb-6 text-center">Register</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full border border-gray-300 rounded-3xl p-10">
@@ -123,7 +127,7 @@ const Register = () => {
        
         <button
           type="submit"
-          className="bg-blue-900 text-white py-2  hover:bg-blue-600 mt-4 w-[20rem] rounded-full"
+          className="bg-blue-600 text-white py-2 hover:bg-blue-700 mt-4 w-[20rem] rounded-full"
         >
           Register
         </button>
@@ -134,6 +138,7 @@ const Register = () => {
           Login
         </Link>
       </p>
+    </div>
     </div>
   );
 };

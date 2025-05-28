@@ -49,11 +49,13 @@ const Navbar = () => {
       </div>
 
       <nav className="fixed top-[72px] left-0 right-0 z-50 bg-[#1e4e9d] py-3 px-4 md:px-20 flex justify-between items-center">
-        <div className="flex justify-center gap-20 flex-1">
+        <div className="flex gap-20 flex-1">
           <Link to="/" className="text-white hover:text-yellow-300 font-semibold">Home</Link>
           <Link to="/about" className="text-white hover:text-yellow-300 font-semibold">About Us</Link>
           <Link to="/shop" className="text-white hover:text-yellow-300 font-semibold">Shop</Link>
           <Link to="/contact" className="text-white hover:text-yellow-300 font-semibold">Contact Us</Link>
+                    <Link to="/contact" className="text-white hover:text-yellow-300 font-semibold">Mega Menu</Link>
+
         </div>
         <div className="flex gap-6 justify-end flex-1 relative">
           <div className="relative">

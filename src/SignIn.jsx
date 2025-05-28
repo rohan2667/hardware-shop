@@ -23,19 +23,25 @@ const SignIn = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6 mt-12 border border-gray-300 rounded shadow-lg bg-white flex flex-col md:flex-row gap-12">
+    <div className="   rounded  bg-white flex flex-col md:flex-row ">
       {/* New Customer Section */}
-      <div className="flex-1 flex flex-col justify-center p-6  rounded-lg">
+      <div>
+        <img src='/public/images/signinn.png' className='w-[65rem]'/>
+      </div>
+      {/* <div className="flex-1 flex flex-col justify-center p-6  rounded-lg">
         <h2 className="text-3xl font-semibold mb-4 text-[#1e4e9d]">New Customer?</h2>
         <p className="text-gray-700 mb-6">
           Create an account to enjoy faster checkout, track your orders, and receive exclusive offers.
         </p>
-        <Link to="/register" className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 font-semibold w-max">
+        <Link to="/register" className='bg-[#fdc800] text-black px-6 py-3  rounded hover:bg-yellow-300 font-semibold w-max'>
           Create Account
         </Link>
-      </div>
+      </div> */}
 
       {/* Sign In Form */}
+      <div className='flex flex-col mr-[8rem]'>
+
+      
       <div className="flex-1">
         <h1 className="text-3xl font-bold mb-6 text-center text-[#1e4e9d]">Sign In</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -85,6 +91,17 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
+      </div>
+      
+      <div className="flex-1 flex flex-col mt-8 justify-center p-6  rounded-lg">
+        <h2 className="text-3xl font-semibold mb-4 text-[#1e4e9d]">New Customer?</h2>
+        <p className="text-gray-700 mb-6">
+          Create an account to enjoy faster checkout, track your orders, and receive exclusive offers.
+        </p>
+        <Link to="/register" className='bg-[#fdc800] text-black px-6 py-3  rounded hover:bg-yellow-300 font-semibold w-max'>
+          Create Account
+        </Link>
+      </div> 
       </div>
     </div>
   );
